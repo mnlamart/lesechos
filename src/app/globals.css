@@ -8,3 +8,7 @@ body {
   -webkit-box-shadow: 1px 6px 8px 1px rgba(151, 143, 143, 0.59);
   -moz-box-shadow: 1px 6px 8px 1px rgba(151, 143, 143, 0.59);
 }
+
+:root {
+  --font-source-sans-3: "Source Sans 3", sans-serif;
+}

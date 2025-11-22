@@ -1,9 +1,8 @@
-"use server";
+import { fetchNewsletters } from "@/lib/newsletters";
+import NewslettersClient from "./newsletters-client";
 
-import React from "react";
+export default async function Page() {
+  const newsletters = await fetchNewsletters();
 
-const page = () => {
-  return <div>This is a default page</div>;
-};
-
-export default page;
+  return <NewslettersClient newsletters={newsletters} />;
+}
