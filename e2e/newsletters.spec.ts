@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { checkA11y } from "../tests/helpers/playwright-a11y";
 
 test.describe("Newsletter Page", () => {
   test("page loads successfully", async ({ page }) => {
@@ -19,6 +20,16 @@ test.describe("Newsletter Page", () => {
     // Check that site groups are visible (DEN, DAN, LAN, SAN)
     const siteGroups = page.locator("h2").filter({ hasText: /^(DEN|DAN|LAN|SAN)$/ });
     await expect(siteGroups.first()).toBeVisible();
+  });
+
+  test("has no RGAA Level AA accessibility violations", async ({ page }) => {
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+    await page.waitForSelector('text="Newsletters"');
+
+    const results = await checkA11y(page);
+
+    expect(results.violations).toEqual([]);
   });
 });
 

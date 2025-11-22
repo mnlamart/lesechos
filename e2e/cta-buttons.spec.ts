@@ -17,7 +17,7 @@ test.describe("Dynamic CTA Buttons", () => {
     await page.waitForSelector('text="Newsletters"');
   });
 
-  test("buttons display correct text ('S'inscrire' vs 'S'abonner')", async ({
+  test("buttons display correct text ('S'inscrire' vs 'S'abonner') for default user", async ({
     page,
   }) => {
     // Wait for buttons to be visible
@@ -26,12 +26,9 @@ test.describe("Dynamic CTA Buttons", () => {
     const inscrireButtons = page.locator('button:has-text("S\u2019inscrire")');
     const abonnerButtons = page.locator('button:has-text("S\u2019abonner")');
 
-    const inscrireCount = await inscrireButtons.count();
-    const abonnerCount = await abonnerButtons.count();
-
     // Default user (USER_WITH_MULTIPLE_SUBSCRIPTION) should have exact expected counts
-    expect(inscrireCount).toBe(expectedInscrireCount);
-    expect(abonnerCount).toBe(expectedAbonnerCount);
+    expect(await inscrireButtons.count()).toBe(expectedInscrireCount);
+    expect(await abonnerButtons.count()).toBe(expectedAbonnerCount);
   });
 
   test("newsletters with empty subscriptions show 'S'inscrire' for default user", async ({
@@ -49,20 +46,6 @@ test.describe("Dynamic CTA Buttons", () => {
     const inscrireButtons = page.locator('button:has-text("S\u2019inscrire")');
     const count = await inscrireButtons.count();
     expect(count).toBeGreaterThanOrEqual(newslettersWithNoRestrictions);
-  });
-
-  test("restricted newsletters show correct button based on default user's subscriptions", async ({
-    page,
-  }) => {
-    await page.waitForSelector('button:has-text("S\u2019inscrire"), button:has-text("S\u2019abonner")');
-
-    // Default user is USER_WITH_MULTIPLE_SUBSCRIPTION (has RIGHT_1 and RIGHT_2)
-    // Verify exact counts match expected values
-    const inscrireButtons = page.locator('button:has-text("S\u2019inscrire")');
-    const abonnerButtons = page.locator('button:has-text("S\u2019abonner")');
-
-    expect(await inscrireButtons.count()).toBe(expectedInscrireCount);
-    expect(await abonnerButtons.count()).toBe(expectedAbonnerCount);
   });
 });
 

@@ -18,6 +18,7 @@
     "styled-components": "^6.1.19"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
     "@playwright/test": "^1.56.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
@@ -26,10 +27,14 @@
     "@types/react-dom": "^18",
     "@types/styled-components": "^5.1.36",
     "@vitejs/plugin-react": "^5.1.1",
+    "axe-core": "^4.11.0",
+    "canvas": "^3.2.0",
     "eslint": "^8",
     "eslint-config-next": "14.0.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "jsdom": "^27.2.0",
     "typescript": "^5",
-    "vitest": "^4.0.13"
+    "vitest": "^4.0.13",
+    "vitest-axe": "^0.1.0"
   }
 }
