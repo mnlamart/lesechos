@@ -101,13 +101,21 @@ export default function NewslettersClient({
           onUserChange={setSelectedUser}
         />
 
-        {groupedNewsletters.map((group) => (
-          <NewsletterGroup
-            key={`${group.site}-${selectedUser.id}`}
-            group={group}
-            user={selectedUser}
-          />
-        ))}
+        {groupedNewsletters.map((group, groupIndex) => {
+          // Calculate start index for this group
+          const startIndex = groupedNewsletters
+            .slice(0, groupIndex)
+            .reduce((sum, g) => sum + g.newsletters.length, 0);
+          
+          return (
+            <NewsletterGroup
+              key={`${group.site}-${selectedUser.id}`}
+              group={group}
+              user={selectedUser}
+              startIndex={startIndex}
+            />
+          );
+        })}
       </Content>
     </Container>
   );

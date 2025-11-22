@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import styled from "styled-components";
 import type { Newsletter, User } from "@/types";
 import { hasAccessToNewsletter } from "@/utils/subscriptions";
@@ -61,18 +62,16 @@ const Description = styled.p`
   width: 302px;
 `;
 
-const Image = styled.img`
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-`;
-
 const ImageContainer = styled.div`
   border-radius: 4px;
   height: 201px;
   overflow: hidden;
   position: relative;
   width: 302px;
+
+  img {
+    object-fit: cover;
+  }
 `;
 
 const Title = styled.h3`
@@ -105,11 +104,13 @@ const TitleOverlay = styled.div`
 type NewsletterCardProps = {
   newsletter: Newsletter;
   user: User;
+  priority?: boolean;
 };
 
 export default function NewsletterCard({
   newsletter,
   user,
+  priority = false,
 }: NewsletterCardProps) {
   const hasAccess = hasAccessToNewsletter(user, newsletter);
   const buttonText = hasAccess ? "S\u2019inscrire" : "S\u2019abonner";
@@ -117,7 +118,13 @@ export default function NewsletterCard({
   return (
     <Card>
       <ImageContainer>
-        <Image src={newsletter.image} alt={newsletter.title} />
+        <Image
+          src={newsletter.image}
+          alt={newsletter.title}
+          fill
+          priority={priority}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 302px"
+        />
         <TitleOverlay>
           <Title>{newsletter.title}</Title>
         </TitleOverlay>

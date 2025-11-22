@@ -49,11 +49,13 @@ const Underline = styled.div`
 type NewsletterGroupProps = {
   group: NewsletterGroupType;
   user: User;
+  startIndex?: number;
 };
 
 export default function NewsletterGroup({
   group,
   user,
+  startIndex = 0,
 }: NewsletterGroupProps) {
   return (
     <GroupContainer>
@@ -62,13 +64,17 @@ export default function NewsletterGroup({
         <Underline />
       </TitleContainer>
       <CardsGrid>
-        {group.newsletters.map((newsletter) => (
-          <NewsletterCard
-            key={`${newsletter.id}-${user.id}`}
-            newsletter={newsletter}
-            user={user}
-          />
-        ))}
+        {group.newsletters.map((newsletter, index) => {
+          const globalIndex = startIndex + index;
+          return (
+            <NewsletterCard
+              key={`${newsletter.id}-${user.id}`}
+              newsletter={newsletter}
+              user={user}
+              priority={globalIndex < 6}
+            />
+          );
+        })}
       </CardsGrid>
     </GroupContainer>
   );
