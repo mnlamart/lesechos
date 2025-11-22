@@ -12,7 +12,7 @@ export function hasAccessToNewsletter(
   if (newsletter.subscriptions.length === 0) {
     return true;
   }
-  
+
   return newsletter.subscriptions.some((sub) =>
     user.subscriptions.includes(sub)
   );

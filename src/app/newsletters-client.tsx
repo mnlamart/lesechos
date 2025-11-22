@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import type { Newsletter, User, NewsletterGroup as NewsletterGroupType } from "@/types";
 import { USER_WITH_MULTIPLE_SUBSCRIPTION } from "@/mocks/user";

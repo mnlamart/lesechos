@@ -10,5 +10,6 @@ body {
 }
 
 :root {
+  --font-merriweather: "Merriweather", serif;
   --font-source-sans-3: "Source Sans 3", sans-serif;
 }

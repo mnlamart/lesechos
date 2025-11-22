@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Merriweather, Source_Sans_3 } from "next/font/google";
 import StyledComponentsRegistry from "@/components/StyledComponentsRegistry";
 
@@ -20,7 +21,7 @@ const merriweather = Merriweather({
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <html

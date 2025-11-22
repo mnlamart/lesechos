@@ -8,7 +8,7 @@ import type { Newsletter } from "@/types";
 export async function fetchNewsletters(): Promise<Newsletter[]> {
   // Simulate network delay
   await new Promise((resolve) => setTimeout(resolve, 100));
-  
+
   return NEWSLETTER_ITEMS;
 }
 

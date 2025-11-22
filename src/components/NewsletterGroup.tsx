@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import styled from "styled-components";
 import type { NewsletterGroup as NewsletterGroupType, User } from "@/types";
 import NewsletterCard from "./NewsletterCard";
@@ -41,7 +40,7 @@ const TitleContainer = styled.div`
 `;
 
 const Underline = styled.div`
-  background-color: #b00005;
+  background-color: #B00005;
   border-radius: 2px;
   height: 4px;
   width: 70px;

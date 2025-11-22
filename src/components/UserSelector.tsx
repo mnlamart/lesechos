@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import type { ChangeEvent } from "react";
 import styled from "styled-components";
 import type { User } from "@/types";
 import {
@@ -37,7 +37,7 @@ const Select = styled.select`
   padding: 8px 12px;
 
   &:focus {
-    border-color: #b00005;
+    border-color: #B00005;
     outline: none;
   }
 `;
@@ -69,7 +69,7 @@ export default function UserSelector({
   selectedUser,
   onUserChange,
 }: UserSelectorProps) {
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const selectedOption = userOptions.find(
       (option) => option.value === e.target.value
     );

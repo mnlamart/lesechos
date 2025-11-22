@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import styled from "styled-components";
 import type { Newsletter, User } from "@/types";
 import { hasAccessToNewsletter } from "@/utils/subscriptions";
